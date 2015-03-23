@@ -1350,9 +1350,14 @@
                 templates: [template]
               };
 
+              var apiScienceKey = jQuery("#api-science-api-key").val();
+              if(apiScienceKey === "") {
+                apiScienceKey = "nVvUks0ba_PlS-jJAjU1KQ";
+              }
+
               request = RAML.Client.Request.create("https://api.apiscience.com/v1/monitors", 'post');
               request.header('Content-Type', 'application/json');
-              request.header('Authorization', 'Bearer nVvUks0ba_PlS-jJAjU1KQ');
+              request.header('Authorization', 'Bearer ' + apiScienceKey);
               request.data(JSON.stringify(monitor));
             }
 
@@ -5638,7 +5643,7 @@ angular.module('ramlConsoleApp').run(['$templateCache', function($templateCache)
     "                <button ng-if=\"showSpinner\" type=\"submit\" class=\"raml-console-sidebar-action raml-console-sidebar-action-{{methodInfo.method}} raml-console-sidebar-action-cancel-request\" ng-click=\"cancelRequest()\">Cancel <div class=\"raml-console-spinner-request\" ng-if=\"showSpinner\">Loading ...</div></button>\n" +
     "                <button class=\"raml-console-sidebar-action raml-console-sidebar-action-clear\" ng-click=\"clearFields()\">Clear</button>\n" +
     "                <button class=\"raml-console-sidebar-action raml-console-sidebar-action-reset\" ng-click=\"resetFields()\">Reset</button>\n" +
-    "                <button ng-hide=\"showSpinner\" type=\"submit\" class=\"send-to-apiscience raml-console-sidebar-action raml-console-sidebar-action-{{methodInfo.method}}\" ng-click=\"tryIt($event)\" ng-class=\"{'raml-console-sidebar-action-force':context.forceRequest}\"><span ng-if=\"context.forceRequest\">Force</span> API Sci\n" +
+    "                <button ng-hide=\"showSpinner\" type=\"submit\" class=\"send-to-apiscience raml-console-sidebar-action raml-console-sidebar-action-{{methodInfo.method}}\" ng-click=\"tryIt($event)\" ng-class=\"{'raml-console-sidebar-action-force':context.forceRequest}\"><span ng-if=\"context.forceRequest\">Force</span> Monitor on API Science\n" +
     "                </button>\n" +
     "              </div>\n" +
     "            </div>\n" +
