@@ -1344,7 +1344,7 @@
               };
 
               var monitor = {
-                name: request.toOptions().method + " " + request.toOptions().url,
+                name: request.toOptions().method + " " + request.toOptions().url.substring(0, 100),
                 frequency: 60,
                 active: true,
                 templates: [template]
